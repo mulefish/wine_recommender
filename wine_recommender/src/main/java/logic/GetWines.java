@@ -10,11 +10,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-public class Main {
+public class GetWines {
 
-    private static final String PATH = "C:\\Users\\squar\\jars\\glove.6B\\glove.6B.50d.txt";
+    private final String PATH = "C:\\Users\\squar\\jars\\glove.6B\\glove.6B.50d.txt";
 
-    List<MyWine> wines = new ArrayList<>(); // Collection to store MyWine objects
+    List<MyWine> wines = new ArrayList<>();
 
     // HashSets to collect unique values for each dimension
     private HashSet<String> typeSet = new HashSet<>();
@@ -32,7 +32,7 @@ public class Main {
 
     private Map<String, double[]> wordEmbeddings = new HashMap<>(); // All GloVe embeddings
 
-    public Main() {
+    public GetWines() {
         // Load the GloVe model
         loadGloveModel(PATH);
     }
@@ -78,7 +78,7 @@ public class Main {
         return new ArrayList<>(wines); // Return the populated wines list
     }
 
-    private void loadGloveModel(String gloveFilePath) {
+    private void loadGloveModel(String gloveFilePath)   {
         try (BufferedReader br = new BufferedReader(new FileReader(gloveFilePath))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -123,7 +123,7 @@ public class Main {
         String user = "postgres";
         String password = "topsecret";
 
-        Main main = new Main();
+        GetWines main = new GetWines();
         ArrayList<MyWine> wines = main.getWines(url, user, password);
 
         if (wines != null) {
